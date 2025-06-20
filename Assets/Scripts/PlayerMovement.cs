@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float m_playerSpeed;
     
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
