@@ -1,25 +1,28 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Food : MonoBehaviour
+namespace SnakeGame
 {
-    [SerializeField] private int m_scoreValue = 10;
-    private ScoreManager m_scoreManager;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Food : MonoBehaviour
     {
-        m_scoreManager = ScoreManager.Instance;
-    }
+        [SerializeField] private int m_scoreValue = 10;
+        private ScoreManager m_scoreManager;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag("Player"))
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            return;
+            m_scoreManager = ScoreManager.Instance;
         }
-        
-        m_scoreManager.AddScore(m_scoreValue);
-        Destroy(this.gameObject);
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.CompareTag("Player"))
+            {
+                return;
+            }
+
+            m_scoreManager.AddScore(m_scoreValue);
+            Destroy(this.gameObject);
+        }
     }
 }

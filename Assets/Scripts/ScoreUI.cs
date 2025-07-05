@@ -1,21 +1,24 @@
 using TMPro;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviourSingleton<ScoreUI>
+namespace SnakeGame
 {
-    [SerializeField] private TMP_Text m_ScoreText;
-    private ScoreManager m_scoreManager;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class ScoreUI : MonoBehaviourSingleton<ScoreUI>
     {
-        m_scoreManager = ScoreManager.Instance;
+        [SerializeField] private TMP_Text m_ScoreText;
+        private ScoreManager m_scoreManager;
 
-        m_ScoreText.text = "Score: 0";
-    }
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            m_scoreManager = ScoreManager.Instance;
 
-    public void UpdateScoreUI()
-    {
-        m_ScoreText.text = $"Score: {m_scoreManager.Score}";
+            m_ScoreText.text = "Score: 0";
+        }
+
+        public void UpdateScoreUI()
+        {
+            m_ScoreText.text = $"Score: {m_scoreManager.Score}";
+        }
     }
 }
