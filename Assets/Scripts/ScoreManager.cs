@@ -25,7 +25,6 @@ namespace SnakeGame
         {
             m_score += score;
             m_scoreUI.UpdateScoreUI();
-            Debug.Log(m_score);
         }
     }
 }

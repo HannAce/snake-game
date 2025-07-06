@@ -24,7 +24,7 @@ namespace SnakeGame
             }
 
             m_scoreManager.AddScore(m_scoreValue);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             m_spawnManager.SpawnFood();
         }
     }

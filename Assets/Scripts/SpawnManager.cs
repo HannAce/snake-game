@@ -8,8 +8,10 @@ namespace SnakeGame
         [SerializeField] private GameObject m_foodPrefab;
         [SerializeField] private GameObject m_foodContainer;
         private float m_foodSpawnDelay = 1f;
-        private float m_xSpawnBoundary = 17f;
-        private float m_ySpawnBoundary = 9.25f;
+        private int m_xSpawnBoundaryMin = -15;
+        private int m_xSpawnBoundaryMax = 15;
+        private int m_ySpawnBoundaryMin = -8;
+        private int m_ySpawnBoundaryMax = 7;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -33,7 +35,7 @@ namespace SnakeGame
 
         public void SpawnFood()
         {
-            Vector3 randomSpawnPosition = new Vector2(Random.Range(-m_xSpawnBoundary, m_xSpawnBoundary), Random.Range(-m_ySpawnBoundary, m_ySpawnBoundary));
+            Vector2 randomSpawnPosition = new Vector2(Random.Range(m_xSpawnBoundaryMin, m_xSpawnBoundaryMax), Random.Range(m_ySpawnBoundaryMin, m_ySpawnBoundaryMax));
             
             GameObject newFood = Instantiate(m_foodPrefab, randomSpawnPosition, Quaternion.identity);   
             newFood.transform.SetParent(m_foodContainer.transform);
