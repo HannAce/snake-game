@@ -5,10 +5,12 @@ namespace SnakeGame
 {
     public class Boundaries : MonoBehaviour
     {
+        [SerializeField] private PlayerMovement m_playerMovement;
+        
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
@@ -17,10 +19,22 @@ namespace SnakeGame
 
         }
 
-        private void OnDrawGizmos()
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.red;
+        //     Gizmos.DrawCube(transform.position, gameObject.transform.localScale);
+        // }
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawCube(transform.position, gameObject.transform.localScale);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                if (m_playerMovement != null)
+                {
+                    m_playerMovement.StopMovement();
+                    Debug.Log("Game Over");
+                }
+            }
         }
     }
 }
