@@ -951,6 +951,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1824254151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1184724004096442507, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
+  m_PrefabInstance: {fileID: 879821421907397229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1824254156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824254151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04109170aedf7f4b85d50cbedadd2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerMovement: {fileID: 2065204291}
+  m_snakeSegmentPrefab: {fileID: 1210759226678176029, guid: b2dd268bc30a84d43a50cfe1c044e708, type: 3}
+  m_snakeSegments: []
 --- !u!114 &2065204291 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3985566312115083369, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
@@ -970,7 +990,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064782140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1140,6 +1160,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1184724004096442507, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
+      propertyPath: m_Name
+      value: SnakeHead
+      objectReference: {fileID: 0}
     - target: {fileID: 2743750180018071483, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1198,8 +1222,29 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 24446588161442096, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 879821421907397231}
+    - targetCorrespondingSourceObject: {fileID: 24446588161442096, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2065204293}
+    - targetCorrespondingSourceObject: {fileID: 1184724004096442507, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1824254156}
   m_SourcePrefab: {fileID: 100100000, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
+--- !u!114 &879821421907397231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064782140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04109170aedf7f4b85d50cbedadd2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerMovement: {fileID: 0}
+  m_snakeSegmentPrefab: {fileID: 1210759226678176029, guid: b2dd268bc30a84d43a50cfe1c044e708, type: 3}
+  m_snakeSegments: []
 --- !u!1001 &6912018944851918376
 PrefabInstance:
   m_ObjectHideFlags: 0
