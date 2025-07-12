@@ -17,15 +17,9 @@ namespace SnakeGame
         void Start()
         {
             SpawnFood();
-            //StartCoroutine(nameof(SpawnFoodRoutine));
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        // Alternative for food to spawn after an amount of time instead of when one is collected
         // IEnumerator SpawnFoodRoutine()
         // {
         //     SpawnFood();

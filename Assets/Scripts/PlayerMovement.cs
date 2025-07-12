@@ -69,6 +69,8 @@ namespace SnakeGame
             transform.position = gridPosition;
         }
         
+        // This is called if the player collides with a wall to stop movement
+        // TODO Also maybe needed when player collides with self after segment implementation 
         public void StopMovement()
         {
             m_movementDirection = Vector2.zero;

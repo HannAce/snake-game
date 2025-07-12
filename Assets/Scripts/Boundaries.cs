@@ -6,25 +6,9 @@ namespace SnakeGame
     public class Boundaries : MonoBehaviour
     {
         [SerializeField] private PlayerMovement m_playerMovement;
-        
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-            
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        // private void OnDrawGizmos()
-        // {
-        //     Gizmos.color = Color.red;
-        //     Gizmos.DrawCube(transform.position, gameObject.transform.localScale);
-        // }
-
+        // Checks if collision is with player
+        // If so, calls StopMovement from PlayerMovement
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Player"))
