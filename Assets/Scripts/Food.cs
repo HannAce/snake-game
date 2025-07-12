@@ -18,7 +18,7 @@ namespace SnakeGame
         }
 
         // Checks if collision is with player
-        // If so, adds score, destorys collected food and spawns new food
+        // If so, adds score, destroys collected food and spawns new food
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("Player"))

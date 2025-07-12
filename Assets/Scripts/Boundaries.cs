@@ -5,19 +5,20 @@ namespace SnakeGame
 {
     public class Boundaries : MonoBehaviour
     {
-        [SerializeField] private PlayerMovement m_playerMovement;
+        private GameManager m_gameManager;
+
+        private void Start()
+        {
+            m_gameManager = GameManager.Instance;
+        }
 
         // Checks if collision is with player
-        // If so, calls StopMovement from PlayerMovement
+        // If so, calls GameOver from Game Manager to stop the game
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                if (m_playerMovement != null)
-                {
-                    m_playerMovement.StopMovement();
-                    Debug.Log("Game Over");
-                }
+                m_gameManager.GameOver();
             }
         }
     }
