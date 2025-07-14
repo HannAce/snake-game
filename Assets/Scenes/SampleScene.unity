@@ -970,7 +970,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerMovement: {fileID: 2065204291}
   m_snakeSegmentPrefab: {fileID: 1210759226678176029, guid: b2dd268bc30a84d43a50cfe1c044e708, type: 3}
-  m_snakeSegments: []
 --- !u!1 &2055961583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,6 +1173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_foodPrefab: {fileID: 2932202084824740636, guid: 7ace1ee12bd5fed47a6cda120f7188ff, type: 3}
   m_foodContainer: {fileID: 183458257}
+  m_snakeSegmentManager: {fileID: 1824254156}
 --- !u!4 &2073490052
 Transform:
   m_ObjectHideFlags: 0
@@ -1267,29 +1267,11 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 24446588161442096, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 879821421907397231}
-    - targetCorrespondingSourceObject: {fileID: 24446588161442096, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2065204293}
     - targetCorrespondingSourceObject: {fileID: 1184724004096442507, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1824254156}
   m_SourcePrefab: {fileID: 100100000, guid: 03f6778d196aab14cb2a35c28e9d4396, type: 3}
---- !u!114 &879821421907397231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064782140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c04109170aedf7f4b85d50cbedadd2a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerMovement: {fileID: 0}
-  m_snakeSegmentPrefab: {fileID: 1210759226678176029, guid: b2dd268bc30a84d43a50cfe1c044e708, type: 3}
-  m_snakeSegments: []
 --- !u!1001 &6912018944851918376
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,12 +11,16 @@ namespace SnakeGame
         [SerializeField] private float m_playerSpeed;
         private Vector2 m_movementDirection = Vector2.right;
         private Vector2 m_targetPosition;
+        private Vector2? m_lastGridPosition; // ? means this variable can potentially = null
         private bool m_canMove = true;
+
+        public Action<Vector2, Vector2> MovedPosition;
 
         void Start()
         {
             m_canMove = true;
             m_targetPosition = transform.position;
+            m_lastGridPosition = null; // set to null at start of game, player has no last position yet
         }
 
         private void FixedUpdate()
@@ -67,6 +71,13 @@ namespace SnakeGame
             // We will round to next int and snap to grid position before moving actual player
             Vector2 gridPosition = new Vector2(Mathf.Round(m_targetPosition.x), Mathf.Round(m_targetPosition.y));
             transform.position = gridPosition;
+
+            // Checks if the last grid position has a value and isn't null
+            if (gridPosition != m_lastGridPosition && m_lastGridPosition.HasValue)
+            {
+                MovedPosition?.Invoke(gridPosition, m_lastGridPosition.Value);
+            }
+            m_lastGridPosition = gridPosition;
         }
         
         // This is called if the player collides with a wall to stop movement

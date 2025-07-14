@@ -8,7 +8,7 @@ namespace SnakeGame
         [SerializeField] private int m_scoreValue = 10;
         private SpawnManager m_spawnManager;
         private ScoreManager m_scoreManager;
-        private SnakeSegments m_snakeSegments;
+        private SnakeSegmentManager m_snakeSegments;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
