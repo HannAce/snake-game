@@ -68,7 +68,7 @@ namespace SnakeGame
             m_targetPosition += targetDirection;
             
             // m_targetPosition above is smooth movement, like a ghost player.
-            // We will round to next int and snap to grid position before moving actual player
+            // This will round to next int and snap to grid position before moving actual player
             Vector2 gridPosition = new Vector2(Mathf.Round(m_targetPosition.x), Mathf.Round(m_targetPosition.y));
             transform.position = gridPosition;
 

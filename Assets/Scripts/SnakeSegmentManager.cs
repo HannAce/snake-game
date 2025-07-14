@@ -13,7 +13,6 @@ namespace SnakeGame
         private int m_snakeLength = 1;
         private GameManager m_gameManager;
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             m_gameManager = GameManager.Instance;
@@ -25,18 +24,15 @@ namespace SnakeGame
             m_playerMovement.MovedPosition -= OnPlayerMoved;
         }
 
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         private void OnPlayerMoved(Vector2 currentGridPosition, Vector2 lastGridPosition)
         {
             AddSnakeSegment(lastGridPosition);
         }
 
+        /// <summary>
+        /// Instantiates a new snake segment, adds to queue and then checks the snake length by calling that function
+        /// </summary>
+        /// <param name="segmentPosition"></param>
         public void AddSnakeSegment(Vector2 segmentPosition)
         {
             Transform newSegment = Instantiate(m_snakeSegmentPrefab, segmentPosition, Quaternion.identity);
@@ -47,7 +43,7 @@ namespace SnakeGame
         
         /// <summary>
         /// Checks if the length of the snake segment queue is greater than the expected snake length.
-        /// Destroys extra snake segment(s).
+        /// Destroys extra snake segment.
         /// </summary>
         private void CheckSnakeLength()
         {
@@ -62,7 +58,6 @@ namespace SnakeGame
         {
             foreach (GameObject snakeSegment in m_snakeSegments)
             {
-                // if there is a snakesegment in position
                 if (snakeSegment.transform.position == position)
                 {
                     return false;
@@ -71,10 +66,13 @@ namespace SnakeGame
 
             return true;
         }
-
-        // Checks if collision is with food or player
-        // If food, adds a segment to grow snake
-        // If player, calls GameOver from Game Manager to stop the game
+        
+        /// <summary>
+        /// Checks if collision is with food or player
+        /// If food, adds a segment to grow snake
+        /// If player, calls GameOver from Game Manager to stop the game
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Food"))

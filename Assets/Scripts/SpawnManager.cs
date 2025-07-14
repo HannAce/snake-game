@@ -14,13 +14,12 @@ namespace SnakeGame
         private int m_ySpawnBoundaryMin = -8;
         private int m_ySpawnBoundaryMax = 7;
         
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             SpawnFood();
         }
 
-        // Alternative for food to spawn after an amount of time instead of when one is collected
+        // Alternative for food to spawn after an amount of time instead of when one is collected, decided not to use
         // IEnumerator SpawnFoodRoutine()
         // {
         //     SpawnFood();
@@ -30,6 +29,8 @@ namespace SnakeGame
 
         public void SpawnFood()
         {
+            // Check up to 100 times for a free position in case a snake segment is in the way
+            // return if free position is found and spawn food
             for (int i = 0; i < 100; i++)
             {
                 Vector2 randomSpawnPosition = new Vector2(Random.Range(m_xSpawnBoundaryMin, m_xSpawnBoundaryMax), Random.Range(m_ySpawnBoundaryMin, m_ySpawnBoundaryMax));

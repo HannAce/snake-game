@@ -8,7 +8,6 @@ namespace SnakeGame
         [SerializeField] private TMP_Text m_ScoreText;
         private ScoreManager m_scoreManager;
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             m_scoreManager = ScoreManager.Instance;

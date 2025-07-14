@@ -9,16 +9,18 @@ namespace SnakeGame
         private SpawnManager m_spawnManager;
         private ScoreManager m_scoreManager;
         private SnakeSegmentManager m_snakeSegments;
-
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        
         void Start()
         {
             m_spawnManager = SpawnManager.Instance;
             m_scoreManager = ScoreManager.Instance;
         }
-
-        // Checks if collision is with player
-        // If so, adds score, destroys collected food and spawns new food
+        
+        /// <summary>
+        /// Checks if collision is with player
+        /// If so, adds score, destroys collected food and spawns new food
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("Player"))
