@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079ad6d142633cc4e89944c3c4581223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_collectFoodSFX: {fileID: 8300000, guid: 0111a8dc9935e1c4bb17ce3e19f7f671, type: 3}
   m_scoreValue: 10
 --- !u!212 &4894221132173964482
 SpriteRenderer:

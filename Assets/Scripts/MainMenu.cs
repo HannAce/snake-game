@@ -1,8 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject m_mainMenuCanvas;
+    [SerializeField] private GameObject m_optionsCanvas;
+
+    private void Start()
+    {
+        m_mainMenuCanvas.SetActive(true);
+        m_optionsCanvas.SetActive(false);
+    }
+
     public void StartButton()
     {
         SceneManager.LoadScene("SnakeBordered");
@@ -10,7 +20,14 @@ public class MainMenu : MonoBehaviour
 
     public void OptionsButton()
     {
-        Debug.Log("Options (oops, not yet implemented)");
+        m_mainMenuCanvas.SetActive(false);
+        m_optionsCanvas.SetActive(true);
+    }
+
+    public void BackButton()
+    {
+        m_mainMenuCanvas.SetActive(true);
+        m_optionsCanvas.SetActive(false);
     }
 
     public void QuitButton()

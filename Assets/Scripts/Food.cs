@@ -5,15 +5,18 @@ namespace SnakeGame
 {
     public class Food : MonoBehaviour
     {
+        [SerializeField] private AudioClip m_collectFoodSFX;
         [SerializeField] private int m_scoreValue = 10;
         private SpawnManager m_spawnManager;
         private ScoreManager m_scoreManager;
-        private SnakeSegmentManager m_snakeSegments;
+        private AudioManager m_audioManager;
+        //private SnakeSegmentManager m_snakeSegments;
         
         void Start()
         {
             m_spawnManager = SpawnManager.Instance;
             m_scoreManager = ScoreManager.Instance;
+            m_audioManager = AudioManager.Instance;
         }
         
         /// <summary>
@@ -29,6 +32,7 @@ namespace SnakeGame
             }
 
             m_scoreManager.AddScore(m_scoreValue);
+            m_audioManager.InstantiateAndPlayAudio2D(m_collectFoodSFX, AudioType.SFX, true, false, 0.7f);
             Destroy(gameObject);
             m_spawnManager.SpawnFood();
         }
