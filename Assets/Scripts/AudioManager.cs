@@ -16,10 +16,17 @@ namespace SnakeGame {
         [SerializeField] private AudioMixerGroup m_sfxMixerGroup;
         [SerializeField] private AudioSource m_audioPrefabToInstantiate;
         
+        // These need to be added as exposed parameters in the Audio Mixer
         public float MusicVolume => m_audioMixer.GetFloat("MusicVolume", out float volume) ? volume : 0; // GetFloat returns bool, uses out param so used ternary
         public float SFXVolume => m_audioMixer.GetFloat("SFXVolume", out float volume) ? volume : 0; // GetFloat returns bool, uses out param so used ternary
-        
-        public AudioSource InstantiateAndPlayAudio2D(AudioClip audioClip, AudioType audioType, bool usesLifetime, bool isLooping, float volume)
+
+        protected override void Awake()
+        {
+            base.Awake();
+            DontDestroyOnLoad(gameObject);
+        }
+
+        public void InstantiateAndPlayAudio2D(AudioClip audioClip, AudioType audioType, bool usesLifetime, bool isLooping, float volume)
         {
             AudioSource audioSource = Instantiate(m_audioPrefabToInstantiate);
             audioSource.spatialBlend = 0.0f;
@@ -43,13 +50,11 @@ namespace SnakeGame {
                 destroyMeComponent.SetLifetime(audioClip.length); // gets length of audioClip, and will call to destroy after
                 destroyMeComponent.StartCountdown();
             }
-        
-            return audioSource;
         }
         
-        public void SetBackgroundVolume(float volume)
+        public void SetMusicVolume(float volume)
         {
-            m_audioMixer.SetFloat("BackgroundVolume", volume);
+            m_audioMixer.SetFloat("MusicVolume", volume);
         }    
     
         public void SetSFXVolume(float volume)

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using SnakeGame;
 using UnityEngine;
 
 namespace SnakeGame

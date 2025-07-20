@@ -1,4 +1,3 @@
-using System;
 using SnakeGame;
 using TMPro;
 using UnityEngine;
@@ -7,13 +6,15 @@ using AudioType = SnakeGame.AudioType;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
-    [SerializeField] private AudioManager m_audioManager;
+    private AudioManager m_audioManager;
     [SerializeField] private PlayerMovement m_playerMovement;
     [SerializeField] private TMP_Text m_gameOverText;
     [SerializeField] private AudioClip m_gameOverSFX;
 
     private void Start()
     {
+        m_audioManager = AudioManager.Instance;
+        
         m_gameOverText.enabled = false;
     }
 

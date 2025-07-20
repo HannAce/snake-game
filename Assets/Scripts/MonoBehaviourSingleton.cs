@@ -15,7 +15,8 @@ namespace SnakeGame {
 		{
 			if (s_instance != null)
 			{
-				Debug.LogError("s_instance already exists!");
+				Debug.LogWarning("s_instance already exists!");
+				Destroy(gameObject);
 				return;
 			}
 
@@ -25,7 +26,10 @@ namespace SnakeGame {
 
 		protected virtual void OnDestroy()
 		{
-			s_instance = null;
+			if (s_instance == this)
+			{
+				s_instance = null;
+			}
 		}
 	}
 }
