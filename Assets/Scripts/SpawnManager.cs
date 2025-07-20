@@ -6,7 +6,6 @@ namespace SnakeGame
     public class SpawnManager : MonoBehaviourSingleton<SpawnManager>
     {
         [SerializeField] private GameObject m_foodPrefab;
-        [SerializeField] private GameObject m_foodContainer;
         [SerializeField] private SnakeSegmentManager m_snakeSegmentManager;
         private float m_foodSpawnDelay = 1f;
         private int m_xSpawnBoundaryMin = -15;
@@ -37,8 +36,7 @@ namespace SnakeGame
 
                 if (m_snakeSegmentManager.CheckPositionIsFree(randomSpawnPosition))
                 {
-                    GameObject newFood = Instantiate(m_foodPrefab, randomSpawnPosition, Quaternion.identity);
-                    newFood.transform.SetParent(m_foodContainer.transform);
+                    Instantiate(m_foodPrefab, randomSpawnPosition, Quaternion.identity);
                     return;
                 }
             }

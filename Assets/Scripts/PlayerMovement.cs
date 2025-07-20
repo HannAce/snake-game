@@ -37,22 +37,22 @@ namespace SnakeGame
         private void GetMovementInput()
         {
             // If holding Up and not already going Down
-            if (Input.GetKey(KeyCode.W) && m_movementDirection.y >= 0)
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && m_movementDirection.y >= 0)
             {
                 m_movementDirection = Vector2.up;
             }
             // If holding Down and not already going Up
-            else if (Input.GetKey(KeyCode.S) && m_movementDirection.y <= 0)
+            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && m_movementDirection.y <= 0)
             {
                 m_movementDirection = Vector2.down;
             }
             // If holding Left and not already going Right
-            else if (Input.GetKey(KeyCode.A) && m_movementDirection.x <= 0)
+            else if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && m_movementDirection.x <= 0)
             {
                 m_movementDirection = Vector2.left;
             }
             // If holding Right and not already going Left
-            else if (Input.GetKey(KeyCode.D) && m_movementDirection.x >= 0)
+            else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && m_movementDirection.x >= 0)
             {
                 m_movementDirection = Vector2.right;
             }
