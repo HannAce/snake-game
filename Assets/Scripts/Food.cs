@@ -9,7 +9,6 @@ namespace SnakeGame
         private SpawnManager m_spawnManager;
         private ScoreManager m_scoreManager;
         private AudioManager m_audioManager;
-        //private SnakeSegmentManager m_snakeSegments;
         
         void Start()
         {

@@ -1329,7 +1329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ed35ddf76fe9845a50db93771cb0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_foodPrefab: {fileID: 2932202084824740636, guid: 7ace1ee12bd5fed47a6cda120f7188ff, type: 3}
+  m_foodPrefab:
+  - {fileID: 2932202084824740636, guid: 7ace1ee12bd5fed47a6cda120f7188ff, type: 3}
+  - {fileID: 7577156147167378319, guid: a35c89dce81926541af178f7a1e420bf, type: 3}
   m_snakeSegmentManager: {fileID: 1824254156}
 --- !u!4 &2073490052
 Transform:
