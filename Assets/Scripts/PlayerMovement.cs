@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SnakeGame
 {
@@ -63,6 +64,7 @@ namespace SnakeGame
             // Adding target direction to target position to move towards that position
             // Alternative to transform.Translate for movement
             m_targetPosition += targetDirection;
+            m_targetPosition = PlayerBounds(m_targetPosition);
             
             // m_targetPosition above is smooth movement, like a ghost player.
             // This will round to next int and snap to grid position before moving actual player
@@ -75,14 +77,53 @@ namespace SnakeGame
                 MovedPosition?.Invoke(gridPosition, m_lastGridPosition.Value);
             }
             m_lastGridPosition = gridPosition;
+            
+            
         }
         
         // This is called if the player collides with a wall to stop movement
-        // TODO Also maybe needed when player collides with self after segment implementation 
         public void StopMovement()
         {
             m_movementDirection = Vector2.zero;
             m_canMove = false;
+        }
+
+        /// <summary>
+        /// Check if player goes out of bounds, and wrap them to the other side of the screen
+        /// </summary>
+        private Vector2 PlayerBounds(Vector2 targetPosition)
+        {
+            // if scene == bordered
+            // early return
+            
+            Vector2 screenBoundsRight = new Vector2(18, transform.position.y);
+            Vector2 screenBoundsLeft = new Vector2(-18, transform.position.y);
+            Vector2 screenBoundsTop = new Vector2(transform.position.x, 11);
+            Vector2 screenBoundsBottom = new Vector2(transform.position.x, -10);
+            
+            // TODO refactor later
+            if (targetPosition.y >= screenBoundsTop.y)
+            {
+                targetPosition = screenBoundsBottom;
+                Debug.Log("Player has wrapped around");
+            }
+            else if (targetPosition.y <= screenBoundsBottom.y)
+            {
+                targetPosition = screenBoundsTop;
+                Debug.Log("Player has wrapped around");
+            }
+            if (targetPosition.x >= screenBoundsRight.x)
+            {
+                targetPosition = screenBoundsLeft;
+                Debug.Log("Player has wrapped around");
+            }
+            else if (targetPosition.x <= screenBoundsLeft.x)
+            {
+                targetPosition = screenBoundsRight;
+                Debug.Log("Player has wrapped around");
+            }
+            
+            return targetPosition;
         }
 
          
