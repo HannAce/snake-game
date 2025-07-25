@@ -7,11 +7,11 @@ namespace SnakeGame
     {
         [SerializeField] private GameObject[] m_foodPrefab;
         [SerializeField] private SnakeSegmentManager m_snakeSegmentManager;
-        private float m_foodSpawnDelay = 1f;
-        private int m_xSpawnBoundaryMin = -15;
-        private int m_xSpawnBoundaryMax = 15;
-        private int m_ySpawnBoundaryMin = -8;
-        private int m_ySpawnBoundaryMax = 7;
+        //private float m_foodSpawnDelay = 1f;
+        private Vector2 m_borderedSpawnBoundaryMin = new(-15, -8);
+        private Vector2 m_borderedSpawnBoundaryMax = new(15, 7);
+        private Vector2 m_unborderedSpawnBoundaryMin = new(-17, -9);
+        private Vector2 m_unborderedSpawnBoundaryMax = new(17, 10);
         
         void Start()
         {
@@ -32,7 +32,21 @@ namespace SnakeGame
             // return if free position is found and spawn food
             for (int i = 0; i < 100; i++)
             {
-                Vector2 randomSpawnPosition = new Vector2(Random.Range(m_xSpawnBoundaryMin, m_xSpawnBoundaryMax), Random.Range(m_ySpawnBoundaryMin, m_ySpawnBoundaryMax));
+                int randomX;
+                int randomY;
+                
+                if (GameManager.IsUnborderedMode)
+                {
+                    randomX = (int)Random.Range(m_unborderedSpawnBoundaryMin.x, m_unborderedSpawnBoundaryMax.x);
+                    randomY = (int)Random.Range(m_unborderedSpawnBoundaryMin.y, m_unborderedSpawnBoundaryMax.y);
+                }
+                else
+                {
+                    randomX = (int)Random.Range(m_borderedSpawnBoundaryMin.x, m_borderedSpawnBoundaryMax.x);
+                    randomY = (int)Random.Range(m_borderedSpawnBoundaryMin.y, m_borderedSpawnBoundaryMax.y);
+                }
+                
+                Vector2 randomSpawnPosition = new Vector2(randomX, randomY);
 
                 if (m_snakeSegmentManager.CheckPositionIsFree(randomSpawnPosition))
                 {

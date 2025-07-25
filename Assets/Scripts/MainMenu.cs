@@ -13,9 +13,14 @@ public class MainMenu : MonoBehaviour
         m_optionsCanvas.SetActive(false);
     }
 
-    public void StartButton()
+    public void StartButtonBordered()
     {
         SceneManager.LoadScene("SnakeBordered");
+    }
+
+    public void StartButtonUnbordered()
+    {
+        SceneManager.LoadScene("SnakeUnbordered");
     }
 
     public void OptionsButton()

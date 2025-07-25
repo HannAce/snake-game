@@ -64,8 +64,11 @@ namespace SnakeGame
             // Adding target direction to target position to move towards that position
             // Alternative to transform.Translate for movement
             m_targetPosition += targetDirection;
-            m_targetPosition = PlayerBounds(m_targetPosition);
-            
+            if (GameManager.IsUnborderedMode)
+            {
+                m_targetPosition = PlayerBounds(m_targetPosition);
+            }
+
             // m_targetPosition above is smooth movement, like a ghost player.
             // This will round to next int and snap to grid position before moving actual player
             Vector2 gridPosition = new Vector2(Mathf.Round(m_targetPosition.x), Mathf.Round(m_targetPosition.y));
@@ -93,34 +96,26 @@ namespace SnakeGame
         /// </summary>
         private Vector2 PlayerBounds(Vector2 targetPosition)
         {
-            // if scene == bordered
-            // early return
+            float screenTop = 10f;
+            float screenBottom = -9f;
+            float screenRight = 18f;
+            float screenLeft = -18f;
             
-            Vector2 screenBoundsRight = new Vector2(18, transform.position.y);
-            Vector2 screenBoundsLeft = new Vector2(-18, transform.position.y);
-            Vector2 screenBoundsTop = new Vector2(transform.position.x, 11);
-            Vector2 screenBoundsBottom = new Vector2(transform.position.x, -10);
-            
-            // TODO refactor later
-            if (targetPosition.y >= screenBoundsTop.y)
+            if (targetPosition.y >= screenTop)
             {
-                targetPosition = screenBoundsBottom;
-                Debug.Log("Player has wrapped around");
+                targetPosition.y = screenBottom;
             }
-            else if (targetPosition.y <= screenBoundsBottom.y)
+            else if (targetPosition.y <= screenBottom)
             {
-                targetPosition = screenBoundsTop;
-                Debug.Log("Player has wrapped around");
+                targetPosition.y = screenTop;
             }
-            if (targetPosition.x >= screenBoundsRight.x)
+            if (targetPosition.x >= screenRight)
             {
-                targetPosition = screenBoundsLeft;
-                Debug.Log("Player has wrapped around");
+                targetPosition.x = screenLeft;
             }
-            else if (targetPosition.x <= screenBoundsLeft.x)
+            else if (targetPosition.x <= screenLeft)
             {
-                targetPosition = screenBoundsRight;
-                Debug.Log("Player has wrapped around");
+                targetPosition.x = screenRight;
             }
             
             return targetPosition;

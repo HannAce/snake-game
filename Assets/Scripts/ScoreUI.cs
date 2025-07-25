@@ -10,22 +10,37 @@ namespace SnakeGame
         [SerializeField] private TMP_Text m_highScoreText;
         private ScoreManager m_scoreManager;
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            ScoreManager.ScoreChanged += OnScoreChanged;
+            ScoreManager.HighScoreChanged += OnHighScoreChanged;
+        }
+
         void Start()
         {
             m_scoreManager = ScoreManager.Instance;
 
             m_scoreText.text = "Score: 0";
-            m_highScoreText.text = $"High Score: {m_scoreManager.HighScore.ToString()}";
         }
 
-        public void UpdateScoreUI()
+        protected override void OnDestroy()
         {
-            m_scoreText.text = $"Score: {m_scoreManager.Score}";
+            base.OnDestroy();
+            
+            ScoreManager.ScoreChanged -= OnScoreChanged;
+            ScoreManager.HighScoreChanged -= OnHighScoreChanged;
         }
 
-        public void UpdateHighScoreUI()
+        public void OnScoreChanged(int score)
         {
-            m_highScoreText.text = $"High Score: {m_scoreManager.HighScore.ToString()}";
+            m_scoreText.text = $"Score: {score.ToString()}";
+        }
+
+        public void OnHighScoreChanged(int highScore)
+        {
+            m_highScoreText.text = $"High Score: {highScore.ToString()}";
         }
     }
 }

@@ -10,6 +10,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private PlayerMovement m_playerMovement;
     [SerializeField] private TMP_Text m_gameOverText;
     [SerializeField] private AudioClip m_gameOverSFX;
+    public static bool IsUnborderedMode;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        // Sets unbordered mode to true if unbordered scene is active
+        IsUnborderedMode = SceneManager.GetActiveScene().name == "SnakeUnbordered";
+    }
 
     private void Start()
     {
