@@ -16,11 +16,13 @@ namespace SnakeGame
 
         void Start()
         {
+            GameManager.GameEnded += OnGameEnded;
+            
             m_canMove = true;
             m_targetPosition = transform.position;
             m_lastGridPosition = null; // set to null at start of game, player has no last position yet
         }
-
+        
         private void FixedUpdate()
         {
             if (!m_canMove)
@@ -31,6 +33,7 @@ namespace SnakeGame
             GetMovementInput();
             Move();
         }
+        
 
         private void GetMovementInput()
         {
@@ -83,9 +86,8 @@ namespace SnakeGame
             
             
         }
-        
-        // This is called if the player collides with a wall to stop movement
-        public void StopMovement()
+        // This is called if the player collides with a wall or self to stop movement
+        private void OnGameEnded()
         {
             m_movementDirection = Vector2.zero;
             m_canMove = false;

@@ -1,3 +1,4 @@
+using System;
 using SnakeGame;
 using TMPro;
 using UnityEngine;
@@ -7,10 +8,11 @@ using AudioType = SnakeGame.AudioType;
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     private AudioManager m_audioManager;
-    [SerializeField] private PlayerMovement m_playerMovement;
     [SerializeField] private TMP_Text m_gameOverText;
     [SerializeField] private AudioClip m_gameOverSFX;
     public static bool IsUnborderedMode;
+
+    public static Action GameEnded;
 
     protected override void Awake()
     {
@@ -36,13 +38,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     // Stops the player movement from PlayerMovement
     public void GameOver()
     {
-        if (m_playerMovement != null)
-        {
-            m_playerMovement.StopMovement();
-            m_gameOverText.enabled = true;
-            m_audioManager.InstantiateAndPlayAudio2D(m_gameOverSFX, AudioType.SFX, true, false, 0.7f);
-            Debug.Log("Game Over");
-        }
+        GameEnded?.Invoke();
+        m_gameOverText.enabled = true;
+        m_audioManager.InstantiateAndPlayAudio2D(m_gameOverSFX, AudioType.SFX, true, false, 0.7f);
     }
 
     private void RestartGame()

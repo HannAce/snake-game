@@ -18,14 +18,6 @@ namespace SnakeGame
             SpawnFood();
         }
 
-        // Alternative for food to spawn after an amount of time instead of when one is collected, decided not to use
-        // IEnumerator SpawnFoodRoutine()
-        // {
-        //     SpawnFood();
-        //     yield return new WaitForSeconds(m_foodSpawnDelay);
-        //     StartCoroutine(nameof(SpawnFoodRoutine));
-        // }
-
         public void SpawnFood()
         {
             // Check up to 100 times for a free position in case a snake segment is in the way
