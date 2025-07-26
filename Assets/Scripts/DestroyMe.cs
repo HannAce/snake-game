@@ -6,7 +6,7 @@ namespace SnakeGame
     public class DestroyMe : MonoBehaviour
     {
         [SerializeField] private float m_lifetime;
-        [SerializeField] private bool m_autoDestroy = true;
+        [SerializeField] private bool m_autoDestroy = false;
 
         private void Start()
         {

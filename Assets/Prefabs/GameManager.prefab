@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b770064513083244940e921150c3a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_backgroundMusic: {fileID: 8300000, guid: a84738f8674c55e48a0b42cb199fa3fa, type: 3}
   m_gameOverText: {fileID: 0}
   m_gameOverSFX: {fileID: 8300000, guid: e429966a66f188b4bb1165e4103b1087, type: 3}

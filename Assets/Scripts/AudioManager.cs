@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -51,7 +52,7 @@ namespace SnakeGame {
 
             if (usesLifetime)
             {
-                DestroyMe destroyMeComponent = audioSource.GetComponent<DestroyMe>();
+                DestroyMe destroyMeComponent = audioSource.AddComponent<DestroyMe>();
                 destroyMeComponent.SetLifetime(audioClip.length); // gets length of audioClip, and will call to destroy after
                 destroyMeComponent.StartCountdown();
             }

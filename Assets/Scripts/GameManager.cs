@@ -8,6 +8,7 @@ using AudioType = SnakeGame.AudioType;
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     private AudioManager m_audioManager;
+    [SerializeField] private AudioClip m_backgroundMusic;
     [SerializeField] private TMP_Text m_gameOverText;
     [SerializeField] private AudioClip m_gameOverSFX;
     public static bool IsUnborderedMode;
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         m_audioManager = AudioManager.Instance;
         
         m_gameOverText.enabled = false;
+        
+        m_audioManager.InstantiateAndPlayAudio2D(m_backgroundMusic, AudioType.Music, false, true, 0.8f);
     }
 
     private void Update()
