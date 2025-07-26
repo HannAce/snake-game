@@ -100,8 +100,8 @@ namespace SnakeGame
         {
             float screenTop = 10f;
             float screenBottom = -9f;
-            float screenRight = 18f;
-            float screenLeft = -18f;
+            float screenRight = 17f;
+            float screenLeft = -17f;
             
             if (targetPosition.y >= screenTop)
             {
@@ -111,11 +111,11 @@ namespace SnakeGame
             {
                 targetPosition.y = screenTop;
             }
-            if (targetPosition.x >= screenRight)
+            if (targetPosition.x > screenRight)
             {
                 targetPosition.x = screenLeft;
             }
-            else if (targetPosition.x <= screenLeft)
+            else if (targetPosition.x < screenLeft)
             {
                 targetPosition.x = screenRight;
             }
