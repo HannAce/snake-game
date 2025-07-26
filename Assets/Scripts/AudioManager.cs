@@ -24,6 +24,11 @@ namespace SnakeGame {
         {
             base.Awake();
             DontDestroyOnLoad(gameObject);
+            
+            float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1);
+            float savedSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
+            SetMusicVolume(savedMusicVolume);
+            SetSFXVolume(savedSFXVolume);
         }
 
         public void InstantiateAndPlayAudio2D(AudioClip audioClip, AudioType audioType, bool usesLifetime, bool isLooping, float volume)

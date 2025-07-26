@@ -13,8 +13,10 @@ namespace SnakeGame {
         {
             m_audioManager = AudioManager.Instance;
             
-            m_musicVolumeSlider.SetValueWithoutNotify(m_audioManager.MusicVolume);
-            m_sfxVolumeSlider.SetValueWithoutNotify(m_audioManager.SFXVolume);
+            float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1);
+            float savedSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
+            m_musicVolumeSlider.SetValueWithoutNotify(savedMusicVolume);
+            m_sfxVolumeSlider.SetValueWithoutNotify(savedSFXVolume);
             
             m_musicVolumeSlider.onValueChanged.AddListener(HandleMusicVolumeChanged);
             m_sfxVolumeSlider.onValueChanged.AddListener(HandleSFXVolumeChanged);
@@ -28,11 +30,13 @@ namespace SnakeGame {
 
         private void HandleMusicVolumeChanged(float volume)
         {
+            PlayerPrefs.SetFloat("MusicVolume", volume);
             m_audioManager.SetMusicVolume(volume);
         }    
     
         private void HandleSFXVolumeChanged(float volume)
         {
+            PlayerPrefs.SetFloat("SFXVolume", volume);
             m_audioManager.SetSFXVolume(volume);
         }
     }
