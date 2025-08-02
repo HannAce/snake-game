@@ -20,7 +20,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         base.Awake();
         
         // Sets unbordered mode to true if unbordered scene is active
-        IsUnborderedMode = SceneManager.GetActiveScene().name == "SnakeUnbordered";
+        if (SceneManager.GetActiveScene().name == "SnakeUnbordered" || SceneManager.GetActiveScene().name == "SnakeUnborderedHard")
+        {
+            IsUnborderedMode = true;
+        }
+
+        if (SceneManager.GetActiveScene().name == "SnakeBordered")
+        {
+            IsUnborderedMode = false;
+        }
     }
 
     private void Start()

@@ -24,15 +24,20 @@ namespace SnakeGame
         /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
-                return;
+                m_scoreManager.AddScore(m_scoreValue);
+                m_audioManager.InstantiateAndPlayAudio2D(m_collectFoodSFX, AudioType.SFX, true, false, 0.7f);
+                Destroy(gameObject);
+                m_spawnManager.SpawnFood();
             }
 
-            m_scoreManager.AddScore(m_scoreValue);
-            m_audioManager.InstantiateAndPlayAudio2D(m_collectFoodSFX, AudioType.SFX, true, false, 0.7f);
-            Destroy(gameObject);
-            m_spawnManager.SpawnFood();
+            // if (other.CompareTag("Wall"))
+            // {
+            //     Debug.Log("Food spawned on wall, destroyed.");
+            //     Destroy(gameObject);
+            //     m_spawnManager.SpawnFood();
+            }
         }
     }
 }
