@@ -22,6 +22,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SnakeUnbordered");
     }
+    
+    public void StartButtonUnborderedHard()
+    {
+        SceneManager.LoadScene("SnakeUnborderedHard");
+    }
 
     public void OptionsButton()
     {

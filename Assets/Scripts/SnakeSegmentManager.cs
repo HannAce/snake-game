@@ -52,17 +52,17 @@ namespace SnakeGame
             }
         }
 
-        public bool CheckPositionIsFree(Vector3 position)
-        {
-            foreach (GameObject snakeSegment in m_snakeSegments)
-            {
-                if (snakeSegment.transform.position == position)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        // public bool CheckPositionIsFree(Vector3 position)
+        // {
+        //     foreach (GameObject snakeSegment in m_snakeSegments)
+        //     {
+        //         if (snakeSegment.transform.position == position)
+        //         {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
         
         /// <summary>
         /// Checks if collision is with food or player

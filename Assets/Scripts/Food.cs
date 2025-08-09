@@ -16,10 +16,11 @@ namespace SnakeGame
             m_scoreManager = ScoreManager.Instance;
             m_audioManager = AudioManager.Instance;
         }
-        
+
         /// <summary>
-        /// Checks if collision is with player
-        /// If so, adds score, destroys collected food and spawns new food
+        /// Checks if collision is with player or wall
+        /// If player, adds score, destroys collected food and spawns new food
+        /// If wall, destroy spawned oob food and spawns new food
         /// </summary>
         /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other)
@@ -37,7 +38,18 @@ namespace SnakeGame
             //     Debug.Log("Food spawned on wall, destroyed.");
             //     Destroy(gameObject);
             //     m_spawnManager.SpawnFood();
+            // }
+        }
+
+        public bool CheckPositionIsFree(Vector2 position)
+        {
+            Collider2D colliderInPosition = Physics2D.OverlapCircle(position, 0.2f);
+            if (colliderInPosition != null)
+            {
+                Debug.Log($"Food cannot spawn here due to {colliderInPosition}!");
+                return false;
             }
+            return true;
         }
     }
 }
