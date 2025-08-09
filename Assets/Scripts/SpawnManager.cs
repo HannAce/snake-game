@@ -5,9 +5,9 @@ namespace SnakeGame
 {
     public class SpawnManager : MonoBehaviourSingleton<SpawnManager>
     {
+        [SerializeField] private GameManager m_gameManager;
         [SerializeField] private GameObject[] m_foodPrefab;
         [SerializeField] private Food m_food;
-        //private float m_foodSpawnDelay = 1f;
         private Vector2 m_borderedSpawnBoundaryMin = new(-15, -8);
         private Vector2 m_borderedSpawnBoundaryMax = new(15, 7);
         private Vector2 m_unborderedSpawnBoundaryMin = new(-17, -9);
@@ -27,7 +27,7 @@ namespace SnakeGame
                 int randomX;
                 int randomY;
                 
-                if (GameManager.IsUnborderedMode)
+                if (m_gameManager.GetGameMode() == GameMode.Unbordered || m_gameManager.GetGameMode() == GameMode.UnborderedHard)
                 {
                     randomX = (int)Random.Range(m_unborderedSpawnBoundaryMin.x, m_unborderedSpawnBoundaryMax.x);
                     randomY = (int)Random.Range(m_unborderedSpawnBoundaryMin.y, m_unborderedSpawnBoundaryMax.y);

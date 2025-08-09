@@ -1,9 +1,18 @@
 using System;
+using NUnit.Framework.Constraints;
 using SnakeGame;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using AudioType = SnakeGame.AudioType;
+
+public enum GameMode
+{
+    Bordered,
+    Unbordered,
+    UnborderedHard,
+    Invalid
+}
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
@@ -11,24 +20,25 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     [SerializeField] private AudioClip m_backgroundMusic;
     [SerializeField] private TMP_Text m_gameOverText;
     [SerializeField] private AudioClip m_gameOverSFX;
-    public static bool IsUnborderedMode;
 
     public static Action GameEnded;
 
     protected override void Awake()
     {
         base.Awake();
-        
-        // Sets unbordered mode to true if unbordered scene is active
-        if (SceneManager.GetActiveScene().name == "SnakeUnbordered" || SceneManager.GetActiveScene().name == "SnakeUnborderedHard")
-        {
-            IsUnborderedMode = true;
-        }
 
-        if (SceneManager.GetActiveScene().name == "SnakeBordered")
-        {
-            IsUnborderedMode = false;
-        }
+        GetGameMode();
+
+        // Sets unbordered mode to true if unbordered scene is active
+        // if (SceneManager.GetActiveScene().name == "SnakeUnbordered" || SceneManager.GetActiveScene().name == "SnakeUnborderedHard")
+        // {
+        //     IsUnborderedMode = true;
+        // }
+        //
+        // if (SceneManager.GetActiveScene().name == "SnakeBordered")
+        // {
+        //     IsUnborderedMode = false;
+        // }
     }
 
     private void Start()
@@ -46,6 +56,27 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         MainMenu();
     }
 
+    public GameMode GetGameMode()
+    {
+        if (SceneManager.GetActiveScene().name == "SnakeBordered")
+        {
+            return GameMode.Bordered;
+        }
+        
+        if (SceneManager.GetActiveScene().name == "SnakeUnbordered")
+        {
+            return GameMode.Unbordered;
+        }
+        
+        if (SceneManager.GetActiveScene().name == "SnakeUnborderedHard")
+        {
+            return GameMode.UnborderedHard;
+        }
+        
+        Debug.LogError("Game Mode not recognized.");
+        return GameMode.Invalid;
+    }
+    
     // Stops the player movement from PlayerMovement
     public void GameOver()
     {

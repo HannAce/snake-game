@@ -6,6 +6,7 @@ namespace SnakeGame
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField] private GameManager m_gameManager;
         [SerializeField] private float m_playerSpeed;
         private Vector2 m_movementDirection = Vector2.right;
         private Vector2 m_targetPosition;
@@ -22,7 +23,12 @@ namespace SnakeGame
             m_targetPosition = transform.position;
             m_lastGridPosition = null; // set to null at start of game, player has no last position yet
         }
-        
+
+        private void OnDestroy()
+        {
+            GameManager.GameEnded -= OnGameEnded;
+        }
+
         private void FixedUpdate()
         {
             if (!m_canMove)
@@ -67,7 +73,7 @@ namespace SnakeGame
             // Adding target direction to target position to move towards that position
             // Alternative to transform.Translate for movement
             m_targetPosition += targetDirection;
-            if (GameManager.IsUnborderedMode)
+            if (m_gameManager.GetGameMode() == GameMode.Unbordered || m_gameManager.GetGameMode() == GameMode.UnborderedHard)
             {
                 m_targetPosition = PlayerBounds(m_targetPosition);
             }

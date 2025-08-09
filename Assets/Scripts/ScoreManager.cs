@@ -5,6 +5,7 @@ namespace SnakeGame
 {
     public class ScoreManager : MonoBehaviourSingleton<ScoreManager>
     {
+        [SerializeField] private GameManager m_gameManager;
         [SerializeField] private ScoreUI m_scoreUI;
         private int m_score;
         private int m_highScore;
@@ -17,9 +18,14 @@ namespace SnakeGame
 
         private void Start()
         {
-            if (GameManager.IsUnborderedMode)
+            if (m_gameManager.GetGameMode() == GameMode.Unbordered)
             {
                 m_highScore = PlayerPrefs.GetInt("UnborderedHighScore", 0);
+            }
+
+            else if (m_gameManager.GetGameMode() == GameMode.UnborderedHard)
+            {
+                m_highScore = PlayerPrefs.GetInt("UnborderedHardHighScore", 0);
             }
             else
             {
@@ -55,9 +61,13 @@ namespace SnakeGame
 
             m_highScore = m_score;
             
-            if (GameManager.IsUnborderedMode)
+            if (m_gameManager.GetGameMode() == GameMode.Unbordered)
             {
                 PlayerPrefs.SetInt("UnborderedHighScore", m_highScore);
+            }
+            else if (m_gameManager.GetGameMode() == GameMode.UnborderedHard)
+            {
+                PlayerPrefs.SetInt("UnborderedHardHighScore", m_highScore);
             }
             else
             {

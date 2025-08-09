@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ed35ddf76fe9845a50db93771cb0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_gameManager: {fileID: 3753745476889398690, guid: b6c18f646c9813a4ca03197dcaf4a8bb, type: 3}
   m_foodPrefab:
   - {fileID: 2932202084824740636, guid: 7ace1ee12bd5fed47a6cda120f7188ff, type: 3}
   m_food: {fileID: 6928267619525485403, guid: 7ace1ee12bd5fed47a6cda120f7188ff, type: 3}
